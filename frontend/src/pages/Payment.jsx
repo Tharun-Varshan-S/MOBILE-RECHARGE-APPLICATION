@@ -65,27 +65,27 @@ export function Payment() {
                 <div className="space-y-2">
                     <button
                         onClick={() => setPaymentMethod('upi')}
-                        className={`w-full text-left p-4 rounded-lg flex items-center gap-3 transition-colors ${paymentMethod === 'upi' ? 'bg-white shadow-md border-l-4 border-primary' : 'bg-gray-50 hover:bg-white hover:shadow-sm'
+                        className={`w-full text-left p-4 rounded-lg flex items-center gap-3 transition-all font-semibold ${paymentMethod === 'upi' ? 'bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 shadow-lg border-2 border-orange-600' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md border-2 border-gray-300'
                             }`}
                     >
-                        <Smartphone size={20} className="text-green-600" />
-                        <span className="font-medium">UPI</span>
+                        <Smartphone size={20} className={paymentMethod === 'upi' ? 'text-gray-900' : 'text-green-600'} />
+                        <span>UPI</span>
                     </button>
                     <button
                         onClick={() => setPaymentMethod('card')}
-                        className={`w-full text-left p-4 rounded-lg flex items-center gap-3 transition-colors ${paymentMethod === 'card' ? 'bg-white shadow-md border-l-4 border-primary' : 'bg-gray-50 hover:bg-white hover:shadow-sm'
+                        className={`w-full text-left p-4 rounded-lg flex items-center gap-3 transition-all font-semibold ${paymentMethod === 'card' ? 'bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 shadow-lg border-2 border-orange-600' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md border-2 border-gray-300'
                             }`}
                     >
-                        <CreditCard size={20} className="text-blue-600" />
-                        <span className="font-medium">Debit / Credit Card</span>
+                        <CreditCard size={20} className={paymentMethod === 'card' ? 'text-gray-900' : 'text-blue-600'} />
+                        <span>Debit / Credit Card</span>
                     </button>
                     <button
                         onClick={() => setPaymentMethod('wallet')}
-                        className={`w-full text-left p-4 rounded-lg flex items-center gap-3 transition-colors ${paymentMethod === 'wallet' ? 'bg-white shadow-md border-l-4 border-primary' : 'bg-gray-50 hover:bg-white hover:shadow-sm'
+                        className={`w-full text-left p-4 rounded-lg flex items-center gap-3 transition-all font-semibold ${paymentMethod === 'wallet' ? 'bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 shadow-lg border-2 border-orange-600' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md border-2 border-gray-300'
                             }`}
                     >
-                        <Wallet size={20} className="text-orange-600" />
-                        <span className="font-medium">Wallet</span>
+                        <Wallet size={20} className={paymentMethod === 'wallet' ? 'text-gray-900' : 'text-orange-600'} />
+                        <span>Wallet</span>
                     </button>
                 </div>
 
@@ -109,13 +109,28 @@ export function Payment() {
                                 <h3 className="font-semibold text-lg">Pay via UPI</h3>
                                 <p className="text-sm text-gray-500">Enter your UPI ID to receive a payment request</p>
                                 <Input placeholder="e.g. 9876543210@upi" />
-                                <Button className="w-full flex items-center justify-center gap-2" onClick={handlePayment} size="lg" disabled={loading}>
+                                <Button className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-gray-900 font-bold border-2 border-orange-600 shadow-lg" onClick={handlePayment} size="lg" disabled={loading}>
                                     {loading ? <Loader2 className="animate-spin" size={20} /> : `Pay ₹${plan.price}`}
                                 </Button>
                                 <div className="flex gap-4 justify-center mt-4">
-                                    <div className="w-8 h-8 rounded bg-gray-200"></div> {/* GPay Icon Placeholder */}
-                                    <div className="w-8 h-8 rounded bg-gray-200"></div> {/* PhonePe Icon Placeholder */}
-                                    <div className="w-8 h-8 rounded bg-gray-200"></div> {/* Paytm Icon Placeholder */}
+                                    <div className="flex flex-col items-center gap-1">
+                                        <div className="w-12 h-12 rounded-lg bg-white border-2 border-gray-300 flex items-center justify-center shadow-sm">
+                                            <span className="text-xl font-bold text-blue-600">G</span>
+                                        </div>
+                                        <span className="text-xs text-gray-600 font-medium">GPay</span>
+                                    </div>
+                                    <div className="flex flex-col items-center gap-1">
+                                        <div className="w-12 h-12 rounded-lg bg-purple-600 flex items-center justify-center shadow-sm">
+                                            <span className="text-xl font-bold text-white">P</span>
+                                        </div>
+                                        <span className="text-xs text-gray-600 font-medium">PhonePe</span>
+                                    </div>
+                                    <div className="flex flex-col items-center gap-1">
+                                        <div className="w-12 h-12 rounded-lg bg-blue-500 flex items-center justify-center shadow-sm">
+                                            <span className="text-xl font-bold text-white">P</span>
+                                        </div>
+                                        <span className="text-xs text-gray-600 font-medium">Paytm</span>
+                                    </div>
                                 </div>
                             </div>
                         )}
@@ -129,7 +144,7 @@ export function Payment() {
                                     <Input label="CVV" placeholder="123" type="password" maxLength={3} />
                                 </div>
                                 <Input label="Name on Card" placeholder="John Doe" />
-                                <Button className="w-full flex items-center justify-center gap-2" onClick={handlePayment} size="lg" disabled={loading}>
+                                <Button className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-gray-900 font-bold border-2 border-orange-600 shadow-lg" onClick={handlePayment} size="lg" disabled={loading}>
                                     {loading ? <Loader2 className="animate-spin" size={20} /> : `Pay ₹${plan.price}`}
                                 </Button>
                             </div>
@@ -146,7 +161,7 @@ export function Payment() {
                                         </div>
                                     ))}
                                 </div>
-                                <Button className="w-full flex items-center justify-center gap-2" onClick={handlePayment} size="lg" disabled={loading}>
+                                <Button className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-gray-900 font-bold border-2 border-orange-600 shadow-lg" onClick={handlePayment} size="lg" disabled={loading}>
                                     {loading ? <Loader2 className="animate-spin" size={20} /> : `Pay ₹${plan.price}`}
                                 </Button>
                             </div>

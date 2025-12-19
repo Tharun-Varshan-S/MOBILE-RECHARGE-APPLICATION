@@ -37,10 +37,10 @@ export function Landing() {
                                 The fastest, most secure way to recharge your mobile, pay bills, and manage your subscriptions.
                             </p>
                             <div className="flex flex-wrap gap-4">
-                                <Button size="lg" className="rounded-full shadow-lg shadow-primary/30" onClick={() => navigate('/login')}>
+                                <Button size="lg" className="rounded-full shadow-lg shadow-orange-500/50 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-gray-900 font-extrabold border-2 border-orange-600" onClick={() => navigate('/login')}>
                                     Get Started
                                 </Button>
-                                <Button size="lg" variant="outline" className="rounded-full border-white text-white hover:bg-white/10">
+                                <Button size="lg" variant="outline" className="rounded-full border-2 border-white bg-white text-gray-900 hover:bg-gray-100 font-bold shadow-lg" onClick={() => navigate('/plans')}>
                                     View Plans
                                 </Button>
                             </div>
@@ -71,8 +71,13 @@ export function Landing() {
                                     <option value="BSNL" />
                                 </datalist>
                                 <div className="pt-2">
-                                    <Button type="submit" size="lg" className="w-full text-lg shadow-lg shadow-primary/20">
+                                    <Button
+                                        type="submit"
+                                        size="lg"
+                                        className="w-full text-lg font-extrabold bg-gradient-to-r from-yellow-400 via-orange-400 to-orange-500 hover:from-yellow-500 hover:via-orange-500 hover:to-orange-600 text-gray-900 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2 border-2 border-orange-600"
+                                    >
                                         Proceed to Recharge
+                                        <ArrowRight size={20} className="font-bold" />
                                     </Button>
                                 </div>
                             </form>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Smartphone, Wifi, CreditCard, Clock, ChevronRight, Plus, Bell, Info } from 'lucide-react';
+import { Smartphone, Wifi, CreditCard, Clock, ChevronRight, Plus, Bell, Info, Shield, User, Layers } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 import { useAuth } from '../context/AuthContext';
@@ -30,10 +30,23 @@ export function Dashboard() {
             {/* Welcome Section */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold text-gray-900">Good Afternoon, {user.name}</h1>
+                    <div className="flex items-center gap-3 mb-2">
+                        <h1 className="text-2xl font-bold text-gray-900">Good Afternoon, {user.name}</h1>
+                        {user.role === 'admin' ? (
+                            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-bold rounded-full shadow-lg border-2 border-red-700">
+                                <Shield size={14} />
+                                ADMIN
+                            </span>
+                        ) : (
+                            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-bold rounded-full shadow-lg border-2 border-blue-700">
+                                <User size={14} />
+                                USER
+                            </span>
+                        )}
+                    </div>
                     <p className="text-gray-500">{user.phone} • {user.role === 'admin' ? 'Administrator' : 'Prepaid User'}</p>
                 </div>
-                <Button onClick={() => navigate('/plans')}>Recharge Now</Button>
+                <Button onClick={() => navigate('/plans')} className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-gray-900 font-bold border-2 border-orange-600 shadow-lg">Recharge Now</Button>
             </div>
 
             {/* Notifications Bar */}
@@ -106,10 +119,10 @@ export function Dashboard() {
                             <span className="text-3xl font-bold">₹0.00</span>
                         </div>
                         <div className="mt-6 flex gap-3">
-                            <Button size="sm" variant="outline" className="text-white border-white hover:bg-white/10" onClick={() => navigate('/history')}>
+                            <Button size="sm" variant="outline" className="text-gray-900 border-2 border-gray-900 hover:bg-gray-100 font-semibold" onClick={() => navigate('/history')}>
                                 View History
                             </Button>
-                            <Button size="sm" className="bg-white text-gray-900 hover:bg-gray-100" onClick={() => navigate('/plans')}>
+                            <Button size="sm" className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-gray-900 font-bold border-2 border-orange-600" onClick={() => navigate('/plans')}>
                                 Add Money
                             </Button>
                         </div>
@@ -122,20 +135,20 @@ export function Dashboard() {
                 <h2 className="text-lg font-bold text-gray-900 mb-4">Quick Actions</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
                     {[
-                        { label: 'Recharge', icon: <Smartphone />, path: '/plans' },
-                        { label: 'History', icon: <Clock />, path: '/history' },
-                        { label: 'View Plans', icon: <Layers />, path: '/plans' },
-                        { label: 'Support', icon: <ChevronRight />, path: '/dashboard' },
+                        { label: 'Recharge', icon: <Smartphone size={24} />, path: '/plans', color: 'text-blue-600', bgColor: 'bg-blue-50' },
+                        { label: 'History', icon: <Clock size={24} />, path: '/history', color: 'text-orange-600', bgColor: 'bg-orange-50' },
+                        { label: 'View Plans', icon: <Layers size={24} />, path: '/plans', color: 'text-purple-600', bgColor: 'bg-purple-50' },
+                        { label: 'Support', icon: <ChevronRight size={24} />, path: '/dashboard', color: 'text-green-600', bgColor: 'bg-green-50' },
                     ].map((action, idx) => (
                         <button
                             key={idx}
                             onClick={() => navigate(action.path)}
-                            className="flex flex-col items-center justify-center p-4 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all gap-3 group"
+                            className="flex flex-col items-center justify-center p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-primary hover:shadow-lg transition-all gap-3 group"
                         >
-                            <div className="p-3 bg-gray-50 rounded-full text-gray-600 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                            <div className={`p-3 ${action.bgColor} rounded-full ${action.color} group-hover:scale-110 transition-transform`}>
                                 {action.icon}
                             </div>
-                            <span className="text-sm font-medium text-gray-700">{action.label}</span>
+                            <span className="text-sm font-semibold text-gray-700">{action.label}</span>
                         </button>
                     ))}
                 </div>
@@ -152,13 +165,8 @@ export function Dashboard() {
                         <p className="text-gray-600 text-sm">Get 2GB extra data on ₹479 recharge.</p>
                     </div>
                 </div>
-                <Button onClick={() => navigate('/plans')}>View Offer</Button>
+                <Button onClick={() => navigate('/plans')} className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-gray-900 font-bold border-2 border-orange-600 shadow-lg">View Offer</Button>
             </Card>
         </div>
     );
-}
-
-// Sub-component or icon import for Layers needed if used
-function Layers({ size }) {
-    return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
 }

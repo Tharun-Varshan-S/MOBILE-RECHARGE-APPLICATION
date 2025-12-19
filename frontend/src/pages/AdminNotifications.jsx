@@ -56,7 +56,7 @@ export function AdminNotifications() {
             <div className="max-w-4xl mx-auto space-y-8">
                 {/* Header */}
                 <div className="flex items-center gap-4">
-                    <Button variant="ghost" onClick={() => navigate('/admin/dashboard')} className="rounded-full">
+                    <Button variant="ghost" onClick={() => navigate('/admin/dashboard')} className="rounded-full text-gray-900 hover:bg-gray-200 font-semibold">
                         <ArrowLeft size={20} />
                     </Button>
                     <div>
@@ -99,7 +99,7 @@ export function AdminNotifications() {
                                 </div>
 
                                 <div className="flex justify-end pt-2">
-                                    <Button className="flex items-center gap-2 px-8" size="lg" onClick={handleSend} disabled={loading || !message || !title}>
+                                    <Button className="flex items-center gap-2 px-8 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-gray-900 font-bold border-2 border-orange-600 shadow-lg" size="lg" onClick={handleSend} disabled={loading || !message || !title}>
                                         {loading ? <Loader2 className="animate-spin" size={18} /> : <Send size={18} />}
                                         {loading ? 'Processing...' : 'Broadcast Now'}
                                     </Button>

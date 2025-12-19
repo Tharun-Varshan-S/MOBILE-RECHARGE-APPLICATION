@@ -56,7 +56,7 @@ export function Plans() {
                 <div className="text-sm text-gray-500 hidden sm:block">
                     Prepaid Utility - Browse Plans
                 </div>
-                <Button variant="outline" size="sm">Change</Button>
+                <Button variant="outline" size="sm" className="border-2 border-primary text-gray-900 font-semibold hover:bg-gray-100">Change</Button>
             </div>
 
             {/* Category Filter */}
@@ -65,9 +65,9 @@ export function Plans() {
                     <button
                         key={cat}
                         onClick={() => setSelectedCategory(cat)}
-                        className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${selectedCategory === cat
-                                ? 'bg-primary text-white shadow-md'
-                                : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
+                        className={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all transform hover:scale-105 ${selectedCategory === cat
+                            ? 'bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 shadow-lg border-2 border-orange-600'
+                            : 'bg-white text-gray-700 hover:bg-gray-100 border-2 border-gray-300 shadow-sm'
                             }`}
                     >
                         {cat}
@@ -84,7 +84,7 @@ export function Plans() {
             ) : error ? (
                 <div className="text-center py-20 bg-red-50 rounded-xl border border-red-100">
                     <p className="text-red-500 font-medium">{error}</p>
-                    <Button variant="ghost" className="mt-4" onClick={() => window.location.reload()}>Retry</Button>
+                    <Button variant="ghost" className="mt-4 text-gray-900 font-semibold hover:bg-red-100" onClick={() => window.location.reload()}>Retry</Button>
                 </div>
             ) : (
                 <div className="space-y-4">
@@ -143,7 +143,7 @@ export function Plans() {
                                     </div>
 
                                     <div className="col-span-1 flex items-center justify-end">
-                                        <Button className="w-full md:w-32 group-hover:bg-primary shadow-lg shadow-primary/10">
+                                        <Button className="w-full md:w-32 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-gray-900 font-bold border-2 border-orange-600 shadow-lg group-hover:shadow-xl">
                                             Buy Plan
                                         </Button>
                                     </div>

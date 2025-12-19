@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowDownLeft, ArrowUpRight, Search, Filter, Loader2 } from 'lucide-react';
+import { ArrowDownLeft, ArrowUpRight, Search, Filter, Loader2, Clock } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Card } from '../components/ui/Card';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
 import api from '../api/axios';
 
 export function History() {
+    const navigate = useNavigate();
     const [history, setHistory] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');

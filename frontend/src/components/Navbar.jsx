@@ -44,29 +44,29 @@ export function Navbar() {
                             <div className="flex items-center gap-4">
                                 {isAdmin && (
                                     <Link to="/admin/dashboard">
-                                        <Button variant="ghost" className="flex items-center gap-2 text-primary font-semibold">
+                                        <Button className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold border-2 border-red-700 shadow-lg">
                                             <Settings size={18} />
-                                            Admin
+                                            ADMIN PANEL
                                         </Button>
                                     </Link>
                                 )}
                                 <Link to="/dashboard">
-                                    <Button variant="ghost" className="flex items-center gap-2">
+                                    <Button variant="ghost" className="flex items-center gap-2 text-gray-900 font-semibold hover:bg-gray-100">
                                         <User size={18} />
                                         Dashboard
                                     </Button>
                                 </Link>
-                                <Button variant="ghost" onClick={handleLogout} className="text-red-600 hover:bg-red-50">
+                                <Button variant="ghost" onClick={handleLogout} className="text-red-600 hover:bg-red-50 font-semibold">
                                     <LogOut size={18} />
                                 </Button>
                             </div>
                         ) : (
                             <div className="flex items-center gap-2">
                                 <Link to="/login">
-                                    <Button variant="ghost">Login</Button>
+                                    <Button variant="ghost" className="text-gray-900 font-semibold">Login</Button>
                                 </Link>
                                 <Link to="/register">
-                                    <Button variant="primary">Sign Up</Button>
+                                    <Button className="bg-white hover:bg-gray-100 text-gray-900 border-2 border-primary shadow-md font-semibold">Sign Up</Button>
                                 </Link>
                             </div>
                         )}
@@ -117,10 +117,10 @@ export function Navbar() {
                                 {isAdmin && (
                                     <Link
                                         to="/admin/dashboard"
-                                        className="block px-2 py-2 text-base font-medium text-primary hover:bg-gray-100 rounded"
+                                        className="block px-2 py-2 text-base font-bold text-white bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 rounded-lg shadow-lg"
                                         onClick={() => setIsOpen(false)}
                                     >
-                                        Admin Dashboard
+                                        🛡️ ADMIN PANEL
                                     </Link>
                                 )}
                                 <Link
@@ -143,10 +143,10 @@ export function Navbar() {
                         ) : (
                             <div className="space-y-1">
                                 <Link to="/login" onClick={() => setIsOpen(false)}>
-                                    <Button variant="ghost" className="w-full justify-start">Login</Button>
+                                    <Button variant="ghost" className="w-full justify-start text-gray-900 font-semibold">Login</Button>
                                 </Link>
                                 <Link to="/register" onClick={() => setIsOpen(false)}>
-                                    <Button variant="primary" className="w-full justify-center">Sign Up</Button>
+                                    <Button className="w-full justify-center bg-white hover:bg-gray-100 text-gray-900 border-2 border-primary shadow-md font-semibold">Sign Up</Button>
                                 </Link>
                             </div>
                         )}

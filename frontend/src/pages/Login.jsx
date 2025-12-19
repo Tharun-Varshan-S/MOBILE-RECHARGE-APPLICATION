@@ -67,7 +67,12 @@ export function Login() {
                         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     />
 
-                    <Button type="submit" className="w-full" size="lg" disabled={loading}>
+                    <Button
+                        type="submit"
+                        className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-gray-900 font-bold border-2 border-orange-600 shadow-lg"
+                        size="lg"
+                        disabled={loading}
+                    >
                         {loading ? 'Logging in...' : 'Login'}
                     </Button>
                 </form>

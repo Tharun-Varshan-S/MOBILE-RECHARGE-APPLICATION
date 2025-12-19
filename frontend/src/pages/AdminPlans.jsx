@@ -121,7 +121,7 @@ export function AdminPlans() {
                         </div>
                     </div>
                     {!isAdding && (
-                        <Button className="flex items-center gap-2 shadow-lg" onClick={() => setIsAdding(true)}>
+                        <Button className="flex items-center gap-2 shadow-lg bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-gray-900 font-bold border-2 border-orange-600" onClick={() => setIsAdding(true)}>
                             <Plus size={18} /> Add New Plan
                         </Button>
                     )}
@@ -131,7 +131,7 @@ export function AdminPlans() {
                     <div className="bg-red-50 border border-red-200 text-red-600 p-4 rounded-xl flex items-center gap-3">
                         <AlertCircle size={20} />
                         <span className="font-medium">{error}</span>
-                        <Button variant="ghost" size="sm" onClick={fetchPlans} className="ml-auto">Retry</Button>
+                        <Button variant="ghost" size="sm" onClick={fetchPlans} className="ml-auto text-gray-900 font-semibold hover:bg-red-100">Retry</Button>
                     </div>
                 )}
 
@@ -157,8 +157,8 @@ export function AdminPlans() {
                             </div>
                             <Input label="Description" placeholder="Additional plan benefits..." value={newData.description} onChange={(e) => setNewData({ ...newData, description: e.target.value })} />
                             <div className="mt-6 flex justify-end gap-3">
-                                <Button variant="ghost" type="button" onClick={() => setIsAdding(false)}>Cancel</Button>
-                                <Button type="submit" disabled={actionLoading === 'add'} className="min-w-[120px]">
+                                <Button variant="ghost" type="button" onClick={() => setIsAdding(false)} className="text-gray-900 font-semibold hover:bg-gray-200">Cancel</Button>
+                                <Button type="submit" disabled={actionLoading === 'add'} className="min-w-[120px] bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-gray-900 font-bold border-2 border-orange-600">
                                     {actionLoading === 'add' ? <Loader2 className="animate-spin" size={20} /> : 'Create Plan'}
                                 </Button>
                             </div>
@@ -191,11 +191,11 @@ export function AdminPlans() {
                                             </div>
                                             <Input label="Description" value={editData.description} onChange={(e) => setEditData({ ...editData, description: e.target.value })} />
                                             <div className="flex justify-end gap-2 pt-2">
-                                                <Button variant="ghost" onClick={() => setIsEditing(null)}>Cancel</Button>
+                                                <Button variant="ghost" onClick={() => setIsEditing(null)} className="text-gray-900 font-semibold hover:bg-gray-200">Cancel</Button>
                                                 <Button
                                                     onClick={() => handleSave(plan._id)}
                                                     disabled={actionLoading === plan._id}
-                                                    className="flex items-center gap-2"
+                                                    className="flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-gray-900 font-bold border-2 border-orange-600"
                                                 >
                                                     {actionLoading === plan._id ? <Loader2 className="animate-spin" size={16} /> : <Save size={16} />}
                                                     Save Changes
@@ -229,7 +229,7 @@ export function AdminPlans() {
                                                     variant="outline"
                                                     size="sm"
                                                     onClick={() => handleEdit(plan)}
-                                                    className="flex-1 md:flex-none"
+                                                    className="flex-1 md:flex-none border-2 border-gray-900 text-gray-900 font-semibold hover:bg-gray-100"
                                                 >
                                                     <Edit2 size={16} />
                                                 </Button>
@@ -237,7 +237,7 @@ export function AdminPlans() {
                                                     variant="outline"
                                                     size="sm"
                                                     disabled={actionLoading === plan._id}
-                                                    className="flex-1 md:flex-none text-red-500 hover:bg-red-50 border-red-200"
+                                                    className="flex-1 md:flex-none text-red-600 hover:bg-red-50 border-2 border-red-500 font-semibold"
                                                     onClick={() => handleDelete(plan._id)}
                                                 >
                                                     {actionLoading === plan._id ? <Loader2 className="animate-spin" size={16} /> : <Trash2 size={16} />}
